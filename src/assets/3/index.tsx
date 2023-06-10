@@ -19,9 +19,9 @@ import image318 from "./18.jpeg";
 import image319 from "./19.jpeg";
 import image320 from "./20.jpeg";
 import image321 from "./21.jpeg";
-import image322 from "./21.jpeg";
-import image323 from "./21.jpeg";
-import image324 from "./21.jpeg";
+import image322 from "./22.jpeg";
+import image323 from "./23.jpeg";
+import image324 from "./24.jpeg";
 
 import video31 from "./25.mp4";
 import video32 from "./26.mp4";

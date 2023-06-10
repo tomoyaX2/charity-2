@@ -13,25 +13,11 @@ const Header = () => {
             <span className="text-2xl text-black-100">Головна</span>
           </Link>
           <Link
-            to="/about-us"
-            className="mr-6 no-underline"
-            style={{ textDecoration: "none" }}
-          >
-            <span className="text-2xl text-black-100">Про нас</span>
-          </Link>
-          <Link
             to="/documents"
             className="mr-6 no-underline"
             style={{ textDecoration: "none" }}
           >
             <span className="text-2xl text-black-100">Документи</span>
-          </Link>
-          <Link
-            to="/contacts"
-            className="mr-6 no-underline"
-            style={{ textDecoration: "none" }}
-          >
-            <span className="text-2xl text-black-100">Контакти</span>
           </Link>
         </Nav>
       </Navbar>
