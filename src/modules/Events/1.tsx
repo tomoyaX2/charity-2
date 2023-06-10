@@ -1,102 +1,77 @@
-import { Header } from "../../components/Header";
-import {
-  image1,
-  image10,
-  image11,
-  image12,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  video1,
-  video2,
-} from "../../assets/1";
-import { useEffect } from "react";
+import { Header } from '../../components/Header';
+import { useCallback, useEffect, useState } from 'react';
+import ImageViewer from 'react-simple-image-viewer';
 
 const Event1 = () => {
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    {
+      url: 'https://cdn.xmanga.org/charity/1.jpeg',
+    },
+    {
+      url: 'https://cdn.xmanga.org/charity/2.jpeg',
+    },
+    {
+      url: 'https://cdn.xmanga.org/charity/3.jpeg',
+    },
+    { url: 'https://cdn.xmanga.org/charity/4.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/5.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/6.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/7.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/8.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/9.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/10.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/11.jpeg' },
+    { url: 'https://cdn.xmanga.org/charity/12.jpeg' },
+  ];
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const openImageViewer = useCallback((index: number) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
+  };
+
   return (
-    <div className="flex w-full flex-col w-full">
+    <div className='flex w-full flex-col w-full'>
       <Header />
-      <div className="flex flex-col items-center justify-center mt-4 w-full">
-        <div className="flex flex-row w-full flex-wrap items-center justify-center">
-          <img
-            src={image1}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
+      <div className='flex flex-col items-center justify-center mt-4 w-full'>
+        {isViewerOpen && (
+          <ImageViewer
+            src={images.map((el) => el.url)}
+            currentIndex={currentImage}
+            disableScroll={false}
+            closeOnClickOutside={true}
+            onClose={closeImageViewer}
           />
-          <img
-            src={image2}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image3}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image4}
-            className="w-[600px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image5}
-            className="w-[800px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image6}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image7}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image8}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image9}
-            className="w-[800px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image10}
-            className="w-[800px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image11}
-            className="w-[800px] h-[600px] p-4"
-            alt="carousel"
-          />
-          <img
-            src={image12}
-            className="w-[450px] h-[600px] p-4"
-            alt="carousel"
-          />
+        )}
+        <div className='flex flex-col w-full flex-wrap items-center justify-center'>
+          {images.map((el, index) => (
+            <img
+              src={el.url}
+              alt='carousel'
+              className='mt-4 shadow-md cursor-pointer'
+              onClick={() => openImageViewer(index)}
+            />
+          ))}
         </div>
-        <div className="flex flex-row">
+        <div className='flex flex-row'>
           <video
-            src={video1}
+            src='https://cdn.xmanga.org/charity/13.mp4'
             controls
-            className="w-[600px] h-[500px] mx-4 rounded-md my-8"
+            className='w-[600px] h-[500px] mx-4 rounded-md my-8'
           />
           <video
-            src={video2}
+            src='https://cdn.xmanga.org/charity/14.mp4'
             controls
-            className="w-[600px] h-[500px] mx-4 rounded-md my-8"
+            className='w-[600px] h-[500px] mx-4 rounded-md my-8'
           />
         </div>
       </div>
